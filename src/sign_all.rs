@@ -17,7 +17,7 @@ fn sig_path_for_file(file_path: &Path) -> PathBuf {
 
 fn sign_one_file(
     file_path: &Path,
-    dir_root: &Path,
+    _dir_root: &Path,
     key_provider: &dyn KeyProvider,
     ledger_path: &Path,
     server_url: Option<&str>,

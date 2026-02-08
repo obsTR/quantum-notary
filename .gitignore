@@ -1,0 +1,16 @@
+# Build
+/target/
+**/*.rs.bk
+
+# Keys and local data (do not commit secrets)
+*.key
+ledger.json
+ledger.jsonl
+central_ledger.jsonl
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

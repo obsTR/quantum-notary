@@ -51,26 +51,49 @@ cd quantum-notary
 cargo build --release
 ```
 
-Binaries:
+**Where the binaries are:**
 
-- **qs_notary** – CLI (`target/release/qs_notary.exe` on Windows, `target/release/qs_notary` elsewhere)
-- **qs_server** – Transparency log server (`target/release/qs_server.exe` / `target/release/qs_server`)
+| Binary      | Windows                      | Linux / macOS              |
+|------------|------------------------------|----------------------------|
+| **qs_notary** | `target\release\qs_notary.exe` | `target/release/qs_notary`   |
+| **qs_server** | `target\release\qs_server.exe` | `target/release/qs_server` |
 
-Optional: add `target/release` to your `PATH` or copy the binaries to a directory already in `PATH`.
+**How to run:** Use the binaries from the **project root** (`quantum-notary`), not from inside `target\release`. Keys, ledger files, and paths in commands are relative to your **current working directory**.
+
+From project root:
+
+- **Windows (PowerShell):**  
+  `.\target\release\qs_notary.exe <command> ...`
+- **Linux / macOS:**  
+  `./target/release/qs_notary <command> ...`
+
+Optional: add `target/release` (or `target\release` on Windows) to your `PATH`, or copy the executables to a folder already on `PATH`, so you can run `qs_notary` and `qs_server` from anywhere.
 
 ---
 
 ## Quick Start
 
-```bash
+Run these from the **project root** so that `public.key` and `private.key` are created there (or use `--output-dir` to choose another folder).
+
+**Windows (PowerShell):**
+
+```powershell
 # 1. Generate a key pair (writes public.key and private.key in current directory)
-qs_notary generate-keys
+.\target\release\qs_notary.exe generate-keys
 
 # 2. Sign an SBOM (e.g. CycloneDX or SPDX JSON)
-qs_notary sign sbom.json --private-key private.key
+.\target\release\qs_notary.exe sign sbom.json --private-key private.key
 
 # 3. Verify the signed SBOM
-qs_notary verify sbom.json sbom.json.sig --public-key public.key
+.\target\release\qs_notary.exe verify sbom.json sbom.json.sig --public-key public.key
+```
+
+**Linux / macOS:**
+
+```bash
+./target/release/qs_notary generate-keys
+./target/release/qs_notary sign sbom.json --private-key private.key
+./target/release/qs_notary verify sbom.json sbom.json.sig --public-key public.key
 ```
 
 Successful verification prints **Verified Safe** in green; failure prints **Verification Failed** in red.
@@ -81,7 +104,7 @@ Successful verification prints **Verified Safe** in green; failure prints **Veri
 
 ### generate-keys
 
-Generate a Dilithium5 key pair and write `public.key` and `private.key` to disk.
+Generate a Dilithium5 key pair and write `public.key` and `private.key` to disk. Files are written to the **current working directory** unless you set `--output-dir`. Run from the project root (or use `--output-dir`) so keys are not created inside `target\release`.
 
 | Argument / flag      | Description |
 |----------------------|-------------|
@@ -89,10 +112,14 @@ Generate a Dilithium5 key pair and write `public.key` and `private.key` to disk.
 
 **Examples:**
 
-```bash
-qs_notary generate-keys
-qs_notary generate-keys --output-dir ./keys
+```powershell
+# From project root (keys go to project root)
+.\target\release\qs_notary.exe generate-keys
+.\target\release\qs_notary.exe generate-keys --output-dir .\keys
 ```
+
+If you already ran from `target\release` and keys are there, move them to the project root:  
+`Move-Item .\target\release\public.key .` and `Move-Item .\target\release\private.key .`
 
 ---
 

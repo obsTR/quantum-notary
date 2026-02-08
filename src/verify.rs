@@ -3,6 +3,7 @@
 use crate::crypto::{load_public_key, load_signature, verify_signature};
 use crate::policy::Policy;
 use colored::Colorize;
+use pqcrypto_traits::sign::PublicKey as PublicKeyTrait;
 use pqcrypto_dilithium::dilithium5::DetachedSignature;
 use sha3::{Digest, Sha3_256};
 use std::path::Path;

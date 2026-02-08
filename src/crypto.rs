@@ -3,7 +3,7 @@
 use pqcrypto_dilithium::dilithium5::{
     detached_sign, keypair, verify_detached_signature, DetachedSignature, PublicKey, SecretKey,
 };
-use pqcrypto_traits::sign::DetachedSignature as DetachedSignatureTrait;
+use pqcrypto_traits::sign::{DetachedSignature as DetachedSignatureTrait, PublicKey as PublicKeyTrait, SecretKey as SecretKeyTrait};
 use std::path::Path;
 
 /// Generate a Dilithium5 keypair and save to `public.key` and `private.key` in the given directory.

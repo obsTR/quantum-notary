@@ -12,7 +12,7 @@ use std::io::Write;
 
 const LEDGER_FILENAME: &str = "central_ledger.jsonl";
 
-#[derive(Deserialize)]
+#[derive(Deserialize, serde::Serialize)]
 struct UploadPayload {
     file_name: String,
     signature_hash: String,
