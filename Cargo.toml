@@ -1,0 +1,29 @@
+[package]
+name = "qs_notary"
+version = "0.1.0"
+edition = "2021"
+description = "Post-quantum SBOM notary with Dilithium5 signing"
+
+[[bin]]
+name = "qs_notary"
+path = "src/main.rs"
+
+[[bin]]
+name = "qs_server"
+path = "src/bin/qs_server.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+pqcrypto-dilithium = "0.5"
+pqcrypto-traits = "0.3"
+sha3 = "0.10"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+colored = "2"
+anyhow = "1"
+chrono = "0.4"
+hex = "0.4"
+ureq = { version = "2", default-features = false, features = ["json"] }
+tokio = { version = "1", features = ["full"] }
+axum = { version = "0.7", features = ["json"] }
+walkdir = "2"
