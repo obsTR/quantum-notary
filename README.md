@@ -3,6 +3,7 @@
 **qs_notary** is a command-line tool for cryptographically **signing** and **verifying** Software Bills of Materials (SBOMs) using **post-quantum cryptography** (Dilithium5). It helps secure your software supply chain with NIST-standard quantum-resistant signatures, transparency logging, and optional policy-based verification.
 
 ---
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18588477-blue)](https://doi.org/10.5281/zenodo.18588477)
 
 ## Table of Contents
 
